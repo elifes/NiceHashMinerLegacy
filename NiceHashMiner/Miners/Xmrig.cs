@@ -75,10 +75,12 @@ namespace NiceHashMiner.Miners
                 var lineLowered = line.ToLower();
                 if (lineLowered.Contains(_lookForStart)) {
                     var speeds = Regex.Match(lineLowered, $"{_lookForStart} (.+?) {_lookForEnd}").Groups[1].Value.Split();
-                    if (double.TryParse(speeds[1], out var sixtySecSpeed)) {
+                    var sixtySecSpeed = 0.0;
+                    var twoSecSpeed = 0.0;
+                    if (double.TryParse(speeds[1], out sixtySecSpeed)) {
                         sixtySecTotal += sixtySecSpeed;
                         ++sixtySecCount;
-                    } else if (double.TryParse(speeds[0], out var twoSecSpeed)) {
+                    } else if (double.TryParse(speeds[0], out twoSecSpeed)) {
                         // Store 2.5s data in case 60s is never reached
                         twoSecTotal += twoSecSpeed;
                         ++twoSecCount;

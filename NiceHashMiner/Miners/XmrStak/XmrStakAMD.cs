@@ -123,8 +123,9 @@ namespace NiceHashMiner.Miners
                 sub_resp = sub_resp.Replace(Highest, "");
                 sub_resp = Regex.Replace(sub_resp, "<.*?>", string.Empty);  // Remove HTML tags
                 var strings = sub_resp.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                var speed = 0.0;
                 foreach (var s in strings) {
-                    if (double.TryParse(s, out var speed)) {
+                    if (double.TryParse(s, out speed)) {
                         _currentMinerReadStatus = MinerAPIReadStatus.GOT_READ;
                         ad.Speed = speed;
                         break;

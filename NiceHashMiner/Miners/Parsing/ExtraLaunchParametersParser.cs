@@ -431,8 +431,9 @@ namespace NiceHashMiner.Miners.Parsing {
                 var i = strings.FindIndex(a => a == "--intensity") + 1;
                 if (i > -1 && strings.Count > i) {
                     var int_strings = strings[i].Split(new string[] {","}, StringSplitOptions.RemoveEmptyEntries);
+                    var intensity = 0;
                     foreach (var int_string in int_strings) {
-                        if (int.TryParse(int_string, out var intensity)) {
+                        if (int.TryParse(int_string, out intensity)) {
                             intensities.Add(intensity);
                         }
                     }
